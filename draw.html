@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Draw | Fundraising Tournament</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f5f7;
+            color: #111827;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            background: rgba(10, 15, 25, 0.97);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #f97316;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #f97316;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: #111827;
+            color: white;
+
+            text-align: center;
+
+            padding: 150px 20px 80px;
+        }
+
+        .hero small {
+            color: #f97316;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 80px);
+            margin-top: 15px;
+        }
+
+        .hero p {
+            color: #d1d5db;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        /* DRAW */
+
+        .draw-section {
+            max-width: 1100px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+
+        .notice {
+            background: white;
+            border-left: 5px solid #f97316;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            margin-bottom: 40px;
+        }
+
+        .notice h2 {
+            margin-bottom: 10px;
+        }
+
+        .notice p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title small {
+            color: #f97316;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-top: 8px;
+        }
+
+        /* MATCH CARDS */
+
+        .matches {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .match {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            border: 1px solid #e5e7eb;
+
+            transition: 0.3s;
+        }
+
+        .match:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+        }
+
+        .match-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            color: #6b7280;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .teams {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .team {
+            flex: 1;
+
+            background: #f3f4f6;
+
+            padding: 18px;
+
+            text-align: center;
+
+            border-radius: 6px;
+
+            font-weight: 800;
+        }
+
+        .vs {
+            font-weight: 900;
+            color: #f97316;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #050a14;
+
+            color: #9ca3af;
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            margin-top: 80px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .matches {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+
+            <span>🏐</span>
+            INVERCARGILL MEN'S VOLLEYBALL
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+
+            <li>
+                <a href="index.html#about">ABOUT</a>
+            </li>
+
+            <li>
+                <a href="register.html">REGISTER</a>
+            </li>
+
+            <li>
+                <a href="draw.html">DRAW</a>
+            </li>
+
+            <li>
+                <a href="results.html">RESULTS</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <small>
+            FUNDRAISING TOURNAMENT
+        </small>
+
+        <h1>
+            TOURNAMENT DRAW
+        </h1>
+
+        <p>
+            Match schedule and court information
+        </p>
+
+    </section>
+
+
+    <!-- DRAW CONTENT -->
+
+    <main class="draw-section">
+
+
+        <div class="notice">
+
+            <h2>
+                Draw Coming Soon
+            </h2>
+
+            <p>
+
+                The tournament draw will be published
+                after team registration has closed and
+                the participating teams have been confirmed.
+
+            </p>
+
+        </div>
+
+
+        <!-- POOL A -->
+
+        <div class="section-title">
+
+            <small>
+                TOURNAMENT SCHEDULE
+            </small>
+
+            <h2>
+                Pool A
+            </h2>
+
+        </div>
+
+
+        <div class="matches">
+
+
+            <div class="match">
+
+                <div class="match-top">
+
+                    <span>
+                        MATCH 01
+                    </span>
+
+                    <span>
+                        TIME TBA
+                    </span>
+
+                </div>
+
+
+                <div class="teams">
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                    <div class="vs">
+                        VS
+                    </div>
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="match">
+
+                <div class="match-top">
+
+                    <span>
+                        MATCH 02
+                    </span>
+
+                    <span>
+                        TIME TBA
+                    </span>
+
+                </div>
+
+
+                <div class="teams">
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                    <div class="vs">
+                        VS
+                    </div>
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="match">
+
+                <div class="match-top">
+
+                    <span>
+                        MATCH 03
+                    </span>
+
+                    <span>
+                        TIME TBA
+                    </span>
+
+                </div>
+
+
+                <div class="teams">
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                    <div class="vs">
+                        VS
+                    </div>
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="match">
+
+                <div class="match-top">
+
+                    <span>
+                        MATCH 04
+                    </span>
+
+                    <span>
+                        TIME TBA
+                    </span>
+
+                </div>
+
+
+                <div class="teams">
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                    <div class="vs">
+                        VS
+                    </div>
+
+                    <div class="team">
+                        TEAM TBA
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+
+            <strong>
+                Invercargill Men's Volleyball Team
+            </strong>
+
+        </p>
+
+        <p>
+            Fundraising Tournament
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
