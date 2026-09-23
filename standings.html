@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Standings | Fundraising Tournament</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f5f7;
+            color: #111827;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            background: rgba(10, 15, 25, 0.97);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #f97316;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #f97316;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: #111827;
+            color: white;
+
+            text-align: center;
+
+            padding: 150px 20px 80px;
+        }
+
+        .hero small {
+            color: #f97316;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 80px);
+            margin-top: 15px;
+        }
+
+        .hero p {
+            color: #d1d5db;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        /* STANDINGS */
+
+        .standings-section {
+            max-width: 1100px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+
+        .notice {
+            background: white;
+
+            border-left: 5px solid #f97316;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            margin-bottom: 45px;
+        }
+
+        .notice h2 {
+            margin-bottom: 10px;
+        }
+
+        .notice p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title small {
+            color: #f97316;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-top: 8px;
+        }
+
+        /* TABLE */
+
+        .table-container {
+            background: white;
+
+            border-radius: 10px;
+
+            overflow-x: auto;
+
+            border: 1px solid #e5e7eb;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 650px;
+        }
+
+        th {
+            background: #111827;
+
+            color: white;
+
+            padding: 18px 15px;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child,
+        th:nth-child(2) {
+            text-align: left;
+        }
+
+        td {
+            padding: 18px 15px;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        td:first-child {
+            font-weight: 800;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+
+            font-weight: 700;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .points {
+            font-weight: 900;
+
+            color: #f97316;
+        }
+
+        .tba {
+            color: #9ca3af;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #050a14;
+
+            color: #9ca3af;
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            margin-top: 80px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+
+            <span>🏐</span>
+            INVERCARGILL MEN'S VOLLEYBALL
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+
+            <li>
+                <a href="index.html#about">ABOUT</a>
+            </li>
+
+            <li>
+                <a href="register.html">REGISTER</a>
+            </li>
+
+            <li>
+                <a href="draw.html">DRAW</a>
+            </li>
+
+            <li>
+                <a href="results.html">RESULTS</a>
+            </li>
+
+            <li>
+                <a href="standings.html">STANDINGS</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <small>
+            FUNDRAISING TOURNAMENT
+        </small>
+
+        <h1>
+            STANDINGS
+        </h1>
+
+        <p>
+            Tournament ladder and team rankings
+        </p>
+
+    </section>
+
+
+    <!-- STANDINGS CONTENT -->
+
+    <main class="standings-section">
+
+
+        <div class="notice">
+
+            <h2>
+                Standings Coming Soon
+            </h2>
+
+            <p>
+
+                The tournament standings will be
+                updated once teams have registered
+                and matches have been played.
+
+            </p>
+
+        </div>
+
+
+        <div class="section-title">
+
+            <small>
+                TOURNAMENT LADDER
+            </small>
+
+            <h2>
+                Pool A
+            </h2>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            POS
+                        </th>
+
+                        <th>
+                            TEAM
+                        </th>
+
+                        <th>
+                            P
+                        </th>
+
+                        <th>
+                            W
+                        </th>
+
+                        <th>
+                            L
+                        </th>
+
+                        <th>
+                            SETS +
+                        </th>
+
+                        <th>
+                            SETS -
+                        </th>
+
+                        <th>
+                            PTS
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            1
+                        </td>
+
+                        <td class="tba">
+                            TEAM TBA
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td class="points">
+                            -
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            2
+                        </td>
+
+                        <td class="tba">
+                            TEAM TBA
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td class="points">
+                            -
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            3
+                        </td>
+
+                        <td class="tba">
+                            TEAM TBA
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td class="points">
+                            -
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            4
+                        </td>
+
+                        <td class="tba">
+                            TEAM TBA
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td>
+                            -
+                        </td>
+
+                        <td class="points">
+                            -
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+
+            <strong>
+                Invercargill Men's Volleyball Team
+            </strong>
+
+        </p>
+
+        <p>
+            Fundraising Tournament
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
