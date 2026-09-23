@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Standings | Fundraising Tournament</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --maroon: #800020;
+            --dark-maroon: #570016;
+            --black: #090909;
+            --white: #ffffff;
+            --light: #f5f5f5;
+            --grey: #777777;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f4f5f7;
-            color: #111827;
+            background: var(--light);
+            color: #111;
+            line-height: 1.6;
         }
 
         /* NAVIGATION */
-
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-
-            background: rgba(10, 15, 25, 0.97);
-
+            background: var(--black);
+            border-bottom: 4px solid var(--maroon);
+            padding: 18px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            padding: 18px 7%;
-
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
 
         .logo {
-            color: white;
-            font-size: 17px;
-            font-weight: 800;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
 
         .logo span {
-            color: #f97316;
+            color: var(--maroon);
         }
 
         nav ul {
@@ -57,338 +59,375 @@
             gap: 28px;
         }
 
-        nav a {
-            color: white;
+        nav ul li a {
+            color: var(--white);
             text-decoration: none;
+            font-weight: bold;
             font-size: 14px;
-            font-weight: 600;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #f97316;
+        nav ul li a:hover {
+            color: #d9a0ad;
         }
 
         /* HERO */
-
         .hero {
-            background: #111827;
-            color: white;
-
+            background:
+                linear-gradient(rgba(9,9,9,0.85), rgba(128,0,32,0.82)),
+                url("https://www.pzps.pl/strapi/uploads/Copco_52_a3d1b4d7c7.jpg");
+            background-size: cover;
+            background-position: center;
+            min-height: 380px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-
-            padding: 150px 20px 80px;
+            padding: 60px 20px;
         }
 
-        .hero small {
-            color: #f97316;
-            font-weight: 800;
+        .hero-content {
+            color: var(--white);
+        }
+
+        .hero-content p {
             letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
-        .hero h1 {
-            font-size: clamp(50px, 8vw, 80px);
-            margin-top: 15px;
+        .hero-content h1 {
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
         }
 
-        .hero p {
-            color: #d1d5db;
-            margin-top: 15px;
-            font-size: 18px;
+        .hero-content h1 span {
+            color: #d9a0ad;
         }
 
-        /* STANDINGS */
-
-        .standings-section {
-            max-width: 1100px;
-            margin: 70px auto;
-            padding: 0 20px;
-        }
-
-        .notice {
-            background: white;
-
-            border-left: 5px solid #f97316;
-
-            padding: 25px;
-
-            border-radius: 8px;
-
-            margin-bottom: 45px;
-        }
-
-        .notice h2 {
-            margin-bottom: 10px;
-        }
-
-        .notice p {
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        .section-title {
-            margin-bottom: 25px;
-        }
-
-        .section-title small {
-            color: #f97316;
-            font-weight: 800;
+        .hero-content .subtitle {
+            font-size: 20px;
             letter-spacing: 2px;
         }
 
-        .section-title h2 {
-            font-size: 32px;
-            margin-top: 8px;
+        /* MAIN */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 25px;
         }
 
-        /* TABLE */
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
 
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 900;
+        }
+
+        .section-title h2 span {
+            color: var(--maroon);
+        }
+
+        .section-title p {
+            color: var(--grey);
+            margin-top: 10px;
+        }
+
+        /* COMING SOON */
+        .coming-soon {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 55px 30px;
+            border-top: 6px solid var(--maroon);
+            margin-bottom: 55px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .coming-soon .icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .coming-soon h2 span {
+            color: #d9a0ad;
+        }
+
+        .coming-soon p {
+            color: #cccccc;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* EVENT DETAILS */
+        .details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 55px;
+        }
+
+        .detail-card {
+            background: var(--white);
+            padding: 28px;
+            border-left: 6px solid var(--maroon);
+            box-shadow: 0 7px 22px rgba(0,0,0,0.07);
+        }
+
+        .detail-card h3 {
+            color: var(--maroon);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .detail-card h4 {
+            font-size: 21px;
+        }
+
+        .detail-card p {
+            color: var(--grey);
+        }
+
+        /* STANDINGS TABLE */
         .table-container {
-            background: white;
-
-            border-radius: 10px;
-
+            background: var(--white);
+            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
             overflow-x: auto;
+        }
 
-            border: 1px solid #e5e7eb;
+        .table-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 18px 25px;
+            border-left: 6px solid var(--maroon);
+        }
+
+        .table-header h3 {
+            font-size: 21px;
         }
 
         table {
             width: 100%;
-
             border-collapse: collapse;
-
             min-width: 650px;
         }
 
         th {
-            background: #111827;
-
-            color: white;
-
-            padding: 18px 15px;
-
+            background: var(--maroon);
+            color: var(--white);
+            padding: 16px 12px;
             text-align: center;
-
             font-size: 13px;
-
             letter-spacing: 0.5px;
         }
 
-        th:first-child,
-        th:nth-child(2) {
-            text-align: left;
-        }
-
         td {
-            padding: 18px 15px;
-
-            border-bottom: 1px solid #e5e7eb;
-
+            padding: 18px 12px;
             text-align: center;
-
-            font-size: 14px;
+            border-bottom: 1px solid #dddddd;
+            font-weight: bold;
         }
 
         td:first-child {
-            font-weight: 800;
+            color: var(--maroon);
         }
 
-        td:nth-child(2) {
+        td.team-name {
             text-align: left;
-
-            font-weight: 700;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .points {
-            font-weight: 900;
-
-            color: #f97316;
         }
 
         .tba {
-            color: #9ca3af;
+            color: var(--grey);
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        /* LEGEND */
+        .legend {
+            margin-top: 25px;
+            color: var(--grey);
+            font-size: 14px;
+            text-align: center;
         }
 
         /* FOOTER */
-
         footer {
-            background: #050a14;
-
-            color: #9ca3af;
-
+            background: var(--black);
+            color: var(--white);
             text-align: center;
-
             padding: 35px 20px;
-
-            margin-top: 80px;
+            border-top: 4px solid var(--maroon);
         }
 
-        footer strong {
-            color: white;
+        footer h3 {
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #bbbbbb;
+            font-size: 14px;
         }
 
         /* MOBILE */
+        @media (max-width: 800px) {
 
-        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
 
             nav ul {
-                display: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
             }
 
-            .hero h1 {
-                font-size: 50px;
+            .hero-content h1 {
+                font-size: 42px;
             }
 
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 50px 15px;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
     <!-- NAVIGATION -->
-
     <nav>
 
         <div class="logo">
-
-            <span>🏐</span>
-            INVERCARGILL MEN'S VOLLEYBALL
-
+            INVERCARGILL <span>MEN'S</span> VOLLEYBALL
         </div>
 
         <ul>
-
-            <li>
-                <a href="index.html">HOME</a>
-            </li>
-
-            <li>
-                <a href="index.html#about">ABOUT</a>
-            </li>
-
-            <li>
-                <a href="register.html">REGISTER</a>
-            </li>
-
-            <li>
-                <a href="draw.html">DRAW</a>
-            </li>
-
-            <li>
-                <a href="results.html">RESULTS</a>
-            </li>
-
-            <li>
-                <a href="standings.html">STANDINGS</a>
-            </li>
-
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="register.html">REGISTER</a></li>
+            <li><a href="draw.html">DRAW</a></li>
+            <li><a href="results.html">RESULTS</a></li>
+            <li><a href="standings.html">STANDINGS</a></li>
         </ul>
 
     </nav>
 
 
     <!-- HERO -->
-
     <section class="hero">
 
-        <small>
-            FUNDRAISING TOURNAMENT
-        </small>
+        <div class="hero-content">
 
-        <h1>
-            STANDINGS
-        </h1>
+            <p>INVERCARGILL MEN'S VOLLEYBALL TEAM PRESENTS</p>
 
-        <p>
-            Tournament ladder and team rankings
-        </p>
+            <h1>
+                TEAM <span>STANDINGS</span>
+            </h1>
+
+            <div class="subtitle">
+                EVERY SET • EVERY POINT • EVERY MATCH
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- STANDINGS CONTENT -->
+    <!-- MAIN -->
+    <main class="container">
 
-    <main class="standings-section">
+        <div class="section-title">
 
-
-        <div class="notice">
-
-            <h2>
-                Standings Coming Soon
-            </h2>
+            <h2>TOURNAMENT <span>STANDINGS</span></h2>
 
             <p>
-
-                The tournament standings will be
-                updated once teams have registered
-                and matches have been played.
-
+                Follow team performance throughout the Fundraising Tournament.
             </p>
 
         </div>
 
 
-        <div class="section-title">
+        <!-- COMING SOON -->
+        <div class="coming-soon">
 
-            <small>
-                TOURNAMENT LADDER
-            </small>
+            <div class="icon">🏆</div>
 
-            <h2>
-                Pool A
-            </h2>
+            <h2>STANDINGS <span>COMING SOON</span></h2>
+
+            <p>
+                Team standings will be updated once matches begin.
+                Check back during the tournament to see the latest rankings,
+                wins, losses, sets and points.
+            </p>
 
         </div>
 
 
+        <!-- EVENT DETAILS -->
+        <div class="details">
+
+            <div class="detail-card">
+
+                <h3>TOURNAMENT DATE</h3>
+
+                <h4>17 OCTOBER 2026</h4>
+
+                <p>Saturday</p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <h3>VENUE</h3>
+
+                <h4>SOUTHLAND GIRLS' HIGH SCHOOL</h4>
+
+                <p>Invercargill, New Zealand</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- STANDINGS -->
         <div class="table-container">
+
+            <div class="table-header">
+
+                <h3>POOL A — CURRENT STANDINGS</h3>
+
+            </div>
+
 
             <table>
 
                 <thead>
 
                     <tr>
-
-                        <th>
-                            POS
-                        </th>
-
-                        <th>
-                            TEAM
-                        </th>
-
-                        <th>
-                            P
-                        </th>
-
-                        <th>
-                            W
-                        </th>
-
-                        <th>
-                            L
-                        </th>
-
-                        <th>
-                            SETS +
-                        </th>
-
-                        <th>
-                            SETS -
-                        </th>
-
-                        <th>
-                            PTS
-                        </th>
-
+                        <th>POS</th>
+                        <th>TEAM</th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>L</th>
+                        <th>SETS +</th>
+                        <th>SETS -</th>
+                        <th>PTS</th>
                     </tr>
 
                 </thead>
@@ -397,150 +436,47 @@
                 <tbody>
 
                     <tr>
-
-                        <td>
-                            1
-                        </td>
-
-                        <td class="tba">
-                            TEAM TBA
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td class="points">
-                            -
-                        </td>
-
+                        <td>1</td>
+                        <td class="team-name tba">Team TBA</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
                     </tr>
 
-
                     <tr>
-
-                        <td>
-                            2
-                        </td>
-
-                        <td class="tba">
-                            TEAM TBA
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td class="points">
-                            -
-                        </td>
-
+                        <td>2</td>
+                        <td class="team-name tba">Team TBA</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
                     </tr>
 
-
                     <tr>
-
-                        <td>
-                            3
-                        </td>
-
-                        <td class="tba">
-                            TEAM TBA
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td class="points">
-                            -
-                        </td>
-
+                        <td>3</td>
+                        <td class="team-name tba">Team TBA</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
                     </tr>
 
-
                     <tr>
-
-                        <td>
-                            4
-                        </td>
-
-                        <td class="tba">
-                            TEAM TBA
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td>
-                            -
-                        </td>
-
-                        <td class="points">
-                            -
-                        </td>
-
+                        <td>4</td>
+                        <td class="team-name tba">Team TBA</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
+                        <td class="tba">-</td>
                     </tr>
 
                 </tbody>
@@ -550,28 +486,30 @@
         </div>
 
 
+        <p class="legend">
+            P = Played &nbsp; | &nbsp;
+            W = Wins &nbsp; | &nbsp;
+            L = Losses &nbsp; | &nbsp;
+            PTS = Points
+        </p>
+
     </main>
 
 
     <!-- FOOTER -->
-
     <footer>
 
+        <h3>FUNDRAISING TOURNAMENT</h3>
+
         <p>
-
-            <strong>
-                Invercargill Men's Volleyball Team
-            </strong>
-
+            Hosted by Invercargill Men's Volleyball Team
         </p>
 
         <p>
-            Fundraising Tournament
+            17 October 2026 • Southland Girls' High School • Invercargill, New Zealand
         </p>
 
     </footer>
 
-
 </body>
-
 </html>
