@@ -1,16 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Fundraising Tournament</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f5f7;
+            color: #111827;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            background: rgba(10, 15, 25, 0.97);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #f97316;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #f97316;
+        }
+
+        .hero {
+            background: #111827;
+            color: white;
+
+            text-align: center;
+
+            padding: 150px 20px 80px;
+        }
+
+        .hero small {
+            color: #f97316;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #d1d5db;
+            font-size: 18px;
+        }
+
+        .registration {
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .notice {
+            background: white;
+            border-left: 5px solid #f97316;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+            margin-bottom: 30px;
+        }
+
+        .notice h2 {
+            margin-bottom: 10px;
+        }
+
+        .notice p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .form-box {
+            background: white;
+            padding: 40px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .form-box h2 {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+            margin-top: 20px;
+        }
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 6px;
+
+            font-size: 15px;
+
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #f97316;
+        }
+
+        button {
+
+            margin-top: 30px;
+
+            width: 100%;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #f97316;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background: #ea580c;
+        }
+
+        footer {
+
+            background: #050a14;
+
+            color: #9ca3af;
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            margin-top: 80px;
+
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .form-box {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
 <body>
 
-    <h1>🏐 Team Registration</h1>
 
-    <p>
-        Registration will open soon.
-    </p>
+    <nav>
 
-    <br>
+        <div class="logo">
 
-    <a href="index.html">
-        ← Back to Home
-    </a>
+            <span>🏐</span>
+            INVERCARGILL MEN'S VOLLEYBALL
+
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="index.html">HOME</a>
+            </li>
+
+            <li>
+                <a href="index.html#about">ABOUT</a>
+            </li>
+
+            <li>
+                <a href="register.html">REGISTER</a>
+            </li>
+
+            <li>
+                <a href="draw.html">DRAW</a>
+            </li>
+
+            <li>
+                <a href="results.html">RESULTS</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <section class="hero">
+
+        <small>FUNDRAISING TOURNAMENT</small>
+
+        <h1>
+            TEAM REGISTRATION
+        </h1>
+
+        <p>
+            Get your team ready to compete.
+        </p>
+
+    </section>
+
+
+    <main class="registration">
+
+
+        <div class="notice">
+
+            <h2>
+                Registration Coming Soon
+            </h2>
+
+            <p>
+
+                Team registration has not opened yet.
+                Registration details, entry fees and
+                deadlines will be announced by the
+                Invercargill Men's Volleyball Team.
+
+            </p>
+
+        </div>
+
+
+        <div class="form-box">
+
+            <h2>
+                Team Registration
+            </h2>
+
+            <p>
+                Registration form will be available
+                when registration officially opens.
+            </p>
+
+
+            <form>
+
+                <label for="team">
+                    Team Name
+                </label>
+
+                <input
+                    type="text"
+                    id="team"
+                    placeholder="Enter your team name"
+                    disabled
+                >
+
+
+                <label for="captain">
+                    Team Captain
+                </label>
+
+                <input
+                    type="text"
+                    id="captain"
+                    placeholder="Enter captain's name"
+                    disabled
+                >
+
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email address"
+                    disabled
+                >
+
+
+                <label for="phone">
+                    Contact Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter contact number"
+                    disabled
+                >
+
+
+                <label for="division">
+                    Division
+                </label>
+
+                <select id="division" disabled>
+
+                    <option>
+                        Select division
+                    </option>
+
+                    <option>
+                        Men's
+                    </option>
+
+                    <option>
+                        Women's
+                    </option>
+
+                    <option>
+                        Mixed
+                    </option>
+
+                </select>
+
+
+                <label for="players">
+                    Additional Information
+                </label>
+
+                <textarea
+                    id="players"
+                    placeholder="Any additional information..."
+                    disabled
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    disabled
+                >
+                    REGISTRATION NOT OPEN
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            <strong>
+                Invercargill Men's Volleyball Team
+            </strong>
+        </p>
+
+        <p>
+            Fundraising Tournament
+        </p>
+
+    </footer>
+
 
 </body>
 
