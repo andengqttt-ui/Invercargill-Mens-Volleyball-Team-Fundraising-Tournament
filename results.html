@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Results | Invercargill Men's Volleyball Team</title>
+<title>Results | Fundraising Tournament</title>
 
 <style>
 :root {
@@ -17,76 +17,101 @@
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: var(--light);
     color: var(--black);
 }
 
 /* NAVIGATION */
-
 nav {
     background: var(--black);
-    padding: 18px 5%;
+    padding: 20px 7%;
     display: flex;
-    justify-content: center;
-    gap: 28px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav div {
+    display: flex;
+    gap: 25px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
     font-size: 14px;
+    font-weight: bold;
 }
 
 nav a:hover {
-    color: #ffb3c6;
+    color: #c00030;
 }
 
 /* HERO */
-
 .hero {
-    background: linear-gradient(
-        rgba(128, 0, 32, 0.92),
-        rgba(87, 0, 22, 0.92)
-    );
-    color: white;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("660125839_1535093435285887_6077932245051341909_n.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    min-height: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 70px 20px;
+    color: white;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 12px;
+    font-size: 50px;
+    letter-spacing: 3px;
 }
 
 .hero p {
-    font-size: 18px;
+    margin-top: 12px;
+    font-size: 17px;
 }
 
 /* CONTENT */
-
 .container {
-    max-width: 1100px;
-    margin: 45px auto;
-    padding: 0 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
 }
 
-.status {
+.section-title {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    color: var(--maroon);
+    font-size: 32px;
+}
+
+.section-title p {
     color: var(--grey);
+    margin-top: 10px;
 }
 
 /* TABLE */
-
 .table-wrapper {
     overflow-x: auto;
     background: white;
@@ -103,24 +128,25 @@ table {
 th {
     background: var(--maroon);
     color: white;
-    padding: 16px;
-    text-align: left;
+    padding: 16px 12px;
+    text-align: center;
+    font-size: 14px;
 }
 
 td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
 }
 
 tr:hover {
     background: #fafafa;
 }
 
-/* SCORE */
-
-.score {
+td:nth-child(3),
+td:nth-child(4) {
     font-weight: bold;
-    font-size: 18px;
 }
 
 .winner {
@@ -128,72 +154,109 @@ tr:hover {
     color: var(--maroon);
 }
 
-/* EMPTY */
-
-.empty {
+/* LOADING */
+.loading {
+    padding: 30px;
     text-align: center;
-    padding: 50px 20px;
     color: var(--grey);
 }
 
 /* FOOTER */
-
 footer {
     background: var(--black);
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 30px 20px;
     margin-top: 70px;
+}
+
+footer p {
+    margin: 5px;
     font-size: 14px;
 }
 
 /* MOBILE */
-
-@media (max-width: 600px) {
-
-    .hero h1 {
-        font-size: 34px;
-    }
+@media (max-width: 800px) {
 
     nav {
+        flex-direction: column;
         gap: 15px;
     }
 
-    nav a {
-        font-size: 12px;
+    nav div {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
 
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .container {
+        width: 95%;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-    <a href="index.html">HOME</a>
-    <a href="register.html">REGISTER</a>
-    <a href="teams.html">TEAMS</a>
-    <a href="draw.html">DRAW</a>
-    <a href="results.html">RESULTS</a>
-    <a href="standings.html">STANDINGS</a>
+
+    <div class="logo">
+        FUNDRAISING
+    </div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="register.html">REGISTER</a>
+        <a href="teams.html">TEAMS</a>
+        <a href="draw.html">DRAW</a>
+        <a href="results.html">RESULTS</a>
+        <a href="standings.html">STANDINGS</a>
+    </div>
+
 </nav>
 
+
+<!-- HERO -->
 <section class="hero">
-    <h1>MATCH RESULTS</h1>
-    <p>Fundraising Tournament • 17 October 2026</p>
+
+    <div>
+
+        <h1>MATCH RESULTS</h1>
+
+        <p>
+            FUNDRAISING TOURNAMENT • 17 OCTOBER 2026
+        </p>
+
+    </div>
+
 </section>
 
-<div class="container">
 
-    <div class="status" id="status">
-        Loading match results...
+<!-- RESULTS -->
+<section class="container">
+
+    <div class="section-title">
+
+        <h2>Completed Matches</h2>
+
+        <p>
+            Match results are updated automatically.
+        </p>
+
     </div>
+
 
     <div class="table-wrapper">
 
-        <table id="resultsTable">
+        <table>
 
             <thead>
+
                 <tr>
                     <th>Match</th>
                     <th>Pool</th>
@@ -202,105 +265,208 @@ footer {
                     <th>Score</th>
                     <th>Winner</th>
                 </tr>
+
             </thead>
 
-            <tbody id="resultsBody"></tbody>
+            <tbody id="resultsTable">
+
+                <tr>
+                    <td colspan="6" class="loading">
+                        Loading results...
+                    </td>
+                </tr>
+
+            </tbody>
 
         </table>
 
-        <div class="empty" id="emptyMessage" style="display:none;">
-            <h2>RESULTS COMING SOON</h2>
-            <p>Match results will appear here during the tournament.</p>
-        </div>
-
     </div>
 
-</div>
+</section>
 
+
+<!-- FOOTER -->
 <footer>
-    <p>Invercargill Men's Volleyball Team</p>
-    <p>Fundraising Tournament • 17 October 2026</p>
+
+    <p><strong>Fundraising Tournament</strong></p>
+
+    <p>
+        Hosted by Invercargill Men's Volleyball Team
+    </p>
+
+    <p>
+        17 October 2026 • Southland Girls' High School
+    </p>
+
 </footer>
+
 
 <script>
 
-const sheetURL =
+const csvURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=1176702748&single=true&output=csv";
 
-async function loadResults() {
 
-    const status = document.getElementById("status");
-    const body = document.getElementById("resultsBody");
-    const empty = document.getElementById("emptyMessage");
+function parseCSV(text) {
 
-    try {
+    const rows = [];
 
-        const response = await fetch(sheetURL);
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
 
-        if (!response.ok) {
-            throw new Error("Could not load results");
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+
+            value += '"';
+            i++;
+
+        } else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        } else if (char === ',' && !insideQuotes) {
+
+            row.push(value);
+            value = "";
+
+        } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+
+            if (char === '\r' && next === '\n') {
+                i++;
+            }
+
+            row.push(value);
+
+            if (row.some(cell => cell.trim() !== "")) {
+                rows.push(row);
+            }
+
+            row = [];
+            value = "";
+
+        } else {
+
+            value += char;
+
         }
 
-        const csv = await response.text();
+    }
 
-        const rows = csv
-            .trim()
-            .split("\n")
-            .map(row => row.split(","));
+    if (value !== "" || row.length > 0) {
 
-        body.innerHTML = "";
+        row.push(value);
+
+        if (row.some(cell => cell.trim() !== "")) {
+            rows.push(row);
+        }
+
+    }
+
+    return rows;
+}
+
+
+fetch(csvURL + "&t=" + new Date().getTime())
+
+    .then(response => response.text())
+
+    .then(csv => {
+
+        const rows = parseCSV(csv);
+
+        const table = document.getElementById("resultsTable");
+
+        table.innerHTML = "";
+
 
         if (rows.length <= 1) {
 
-            status.textContent =
-                "No match results have been published yet.";
-
-            empty.style.display = "block";
+            table.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No match results are available yet.
+                    </td>
+                </tr>
+            `;
 
             return;
         }
 
-        status.textContent = "Current match results";
 
-        rows.slice(1).forEach(row => {
+        // Skip the header row
+        for (let i = 1; i < rows.length; i++) {
 
-            if (row.length < 7) return;
+            const row = rows[i];
 
-            const match = row[0]?.trim();
-            const pool = row[1]?.trim();
-            const team1 = row[2]?.trim();
-            const team2 = row[3]?.trim();
-            const sets1 = row[4]?.trim();
-            const sets2 = row[5]?.trim();
-            const winner = row[6]?.trim();
+            if (!row[0] || row[0].trim() === "") {
+                continue;
+            }
+
 
             const tr = document.createElement("tr");
 
-            tr.innerHTML = `
-                <td>${match}</td>
-                <td>${pool}</td>
-                <td>${team1}</td>
-                <td>${team2}</td>
-                <td class="score">${sets1} - ${sets2}</td>
-                <td class="winner">${winner}</td>
-            `;
 
-            body.appendChild(tr);
+            // Match
+            let td = document.createElement("td");
+            td.textContent = row[0] || "";
+            tr.appendChild(td);
 
-        });
 
-    } catch (error) {
+            // Pool
+            td = document.createElement("td");
+            td.textContent = row[1] || "";
+            tr.appendChild(td);
 
-        status.textContent =
-            "Unable to load results. Please try again later.";
 
-        empty.style.display = "block";
+            // Team 1
+            td = document.createElement("td");
+            td.textContent = row[2] || "";
+            tr.appendChild(td);
+
+
+            // Team 2
+            td = document.createElement("td");
+            td.textContent = row[3] || "";
+            tr.appendChild(td);
+
+
+            // Score
+            td = document.createElement("td");
+            td.textContent = `${row[4] || "0"} - ${row[5] || "0"}`;
+            td.style.fontWeight = "bold";
+            tr.appendChild(td);
+
+
+            // Winner
+            td = document.createElement("td");
+            td.textContent = row[6] || "";
+            td.className = "winner";
+            tr.appendChild(td);
+
+
+            table.appendChild(tr);
+        }
+
+    })
+
+    .catch(error => {
 
         console.error(error);
-    }
-}
 
-loadResults();
+        document.getElementById("resultsTable").innerHTML = `
+            <tr>
+                <td colspan="6">
+                    Unable to load match results.
+                </td>
+            </tr>
+        `;
+
+    });
 
 </script>
 
