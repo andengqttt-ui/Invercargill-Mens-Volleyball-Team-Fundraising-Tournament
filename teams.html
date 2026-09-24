@@ -1,448 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Registered Teams | Fundraising Tournament</title>
+    <title>Teams | Fundraising Tournament</title>
 
-  <style>
-    :root {
-      --maroon: #800020;
-      --dark-maroon: #570016;
-      --black: #090909;
-      --white: #ffffff;
-      --light: #f5f5f5;
-      --grey: #777777;
-    }
+    <style>
+        :root {
+            --maroon: #800020;
+            --dark-maroon: #570016;
+            --black: #090909;
+            --white: #ffffff;
+            --light: #f5f5f5;
+            --grey: #777777;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
-      color: var(--black);
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--black);
+        }
 
-    /* NAVIGATION */
-    nav {
-      background: var(--black);
-      border-bottom: 4px solid var(--maroon);
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+        nav {
+            background: var(--black);
+            padding: 20px;
+            text-align: center;
+        }
 
-    .logo {
-      color: var(--white);
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-    .logo span {
-      color: #d9a0ad;
-    }
+        nav a:hover {
+            color: var(--maroon);
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
+        .hero {
+            background: linear-gradient(
+                rgba(87, 0, 22, 0.92),
+                rgba(9, 9, 9, 0.92)
+            );
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
 
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
 
-    nav a:hover {
-      color: #d9a0ad;
-    }
+        .hero p {
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
 
-    /* HERO */
-    .hero {
-      min-height: 390px;
-      background:
-        linear-gradient(rgba(9,9,9,.82), rgba(87,0,22,.82)),
-        url("662108253_1535096835285547_320430927793915060_n.jpg")
-        center/cover no-repeat;
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-    }
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
 
-    .hero-content {
-      max-width: 900px;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
 
-    .hero small {
-      color: #d9a0ad;
-      font-size: 14px;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
+        th {
+            background: var(--maroon);
+            color: white;
+            padding: 17px;
+            text-align: center;
+        }
 
-    .hero h1 {
-      color: var(--white);
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: .95;
-      margin: 15px 0;
-      font-weight: 900;
-    }
+        td {
+            padding: 17px;
+            text-align: center;
+            border-bottom: 1px solid #eeeeee;
+        }
 
-    .hero p {
-      color: #eeeeee;
-      font-size: 17px;
-      letter-spacing: 3px;
-    }
+        tr:last-child td {
+            border-bottom: none;
+        }
 
-    /* CONTENT */
-    .section {
-      padding: 70px 7%;
-      max-width: 1200px;
-      margin: auto;
-    }
+        tr:hover {
+            background: #fafafa;
+        }
 
-    .section-heading {
-      text-align: center;
-      margin-bottom: 45px;
-    }
+        td:nth-child(2) {
+            font-weight: bold;
+        }
 
-    .section-heading small {
-      color: var(--maroon);
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+        .loading,
+        .empty,
+        .error {
+            text-align: center;
+            padding: 45px 20px;
+            color: var(--grey);
+        }
 
-    .section-heading h2 {
-      font-size: 40px;
-      margin-top: 8px;
-    }
+        footer {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
 
-    .section-heading p {
-      color: var(--grey);
-      margin-top: 10px;
-    }
+        @media (max-width: 700px) {
 
-    /* STATUS */
-    .status {
-      background: var(--black);
-      color: var(--white);
-      border-left: 6px solid var(--maroon);
-      padding: 25px;
-      margin-bottom: 35px;
-      text-align: center;
-    }
+            .hero h1 {
+                font-size: 34px;
+            }
 
-    .status h3 {
-      color: #d9a0ad;
-      font-size: 14px;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    .status p {
-      font-size: 18px;
-    }
-
-    /* TEAM GRID */
-    #teams {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .team-card {
-      background: var(--white);
-      border-top: 6px solid var(--maroon);
-      padding: 28px;
-      box-shadow: 0 8px 25px rgba(0,0,0,.08);
-      transition: .2s;
-    }
-
-    .team-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .team-number {
-      color: var(--maroon);
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .team-name {
-      font-size: 25px;
-      font-weight: 900;
-      margin: 10px 0;
-    }
-
-    .players {
-      color: var(--grey);
-      font-size: 14px;
-    }
-
-    .players strong {
-      color: var(--black);
-    }
-
-    /* EMPTY MESSAGE */
-    .empty {
-      grid-column: 1 / -1;
-      background: var(--white);
-      padding: 50px 25px;
-      text-align: center;
-      border: 1px solid #dddddd;
-    }
-
-    .empty h3 {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-
-    .empty p {
-      color: var(--grey);
-      line-height: 1.6;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      text-align: center;
-      padding: 35px 20px;
-      border-top: 5px solid var(--maroon);
-    }
-
-    footer h3 {
-      font-size: 18px;
-    }
-
-    footer p {
-      color: #aaaaaa;
-      font-size: 13px;
-      line-height: 1.7;
-      margin-top: 8px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 800px) {
-
-      nav {
-        justify-content: center;
-      }
-
-      .logo {
-        width: 100%;
-        text-align: center;
-      }
-
-      nav ul {
-        justify-content: center;
-      }
-
-      #teams {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: 330px;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .section-heading h2 {
-        font-size: 32px;
-      }
-    }
-  </style>
+            nav a {
+                display: inline-block;
+                margin: 6px 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="register.html">REGISTER</a>
+    <a href="teams.html">TEAMS</a>
+    <a href="draw.html">DRAW</a>
+    <a href="results.html">RESULTS</a>
+    <a href="standings.html">STANDINGS</a>
+</nav>
 
-    <div class="logo">
-      FUNDRAISING <span>TOURNAMENT</span>
-    </div>
+<section class="hero">
+    <h1>REGISTERED TEAMS</h1>
+    <p>FUNDRAISING TOURNAMENT • 17 OCTOBER 2026</p>
+</section>
 
-    <ul>
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="register.html">REGISTER</a></li>
-      <li><a href="teams.html">TEAMS</a></li>
-      <li><a href="draw.html">DRAW</a></li>
-      <li><a href="results.html">RESULTS</a></li>
-      <li><a href="standings.html">STANDINGS</a></li>
-    </ul>
+<div class="container">
 
-  </nav>
+    <div class="table-container">
 
+        <div id="loading" class="loading">
+            Loading registered teams...
+        </div>
 
-  <!-- HERO -->
-  <section class="hero">
+        <div id="empty" class="empty" style="display:none;">
+            Registration is not open yet.
+        </div>
 
-    <div class="hero-content">
+        <div id="error" class="error" style="display:none;">
+            Unable to load registered teams.
+        </div>
 
-      <small>INVERCARGILL MEN'S VOLLEYBALL TEAM</small>
+        <table id="teamsTable" style="display:none;">
 
-      <h1>REGISTERED<br>TEAMS</h1>
+            <thead>
+                <tr>
+                    <th>TEAM NO.</th>
+                    <th>TEAM NAME</th>
+                    <th>PLAYERS</th>
+                </tr>
+            </thead>
 
-      <p>PLAY • COMPETE • SUPPORT</p>
+            <tbody id="teamsBody"></tbody>
 
-    </div>
-
-  </section>
-
-
-  <!-- TEAMS -->
-  <section class="section">
-
-    <div class="section-heading">
-
-      <small>FUNDRAISING TOURNAMENT</small>
-
-      <h2>Confirmed Teams</h2>
-
-      <p>
-        Teams that have completed registration and payment confirmation
-        will appear here.
-      </p>
+        </table>
 
     </div>
 
+</div>
 
-    <div class="status">
-
-      <h3>TOURNAMENT DETAILS</h3>
-
-      <p>
-        17 October 2026
-        &nbsp; • &nbsp;
-        Southland Girls' High School
-        &nbsp; • &nbsp;
-        Invercargill
-      </p>
-
-    </div>
+<footer>
+    <p>© 2026 Invercargill Men's Volleyball Team</p>
+    <p>Fundraising Tournament • Invercargill, New Zealand</p>
+</footer>
 
 
-    <div id="teams">
+<script>
 
-      <div class="empty">
-
-        <h3>Registration is not open yet</h3>
-
-        <p>
-          Confirmed teams will appear here once tournament registration begins.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
+const csvURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=1313713334&single=true&output=csv";
 
 
-  <!-- FOOTER -->
-  <footer>
+function parseCSV(text) {
 
-    <h3>FUNDRAISING TOURNAMENT</h3>
+    const rows = [];
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
 
-    <p>
-      Hosted by Invercargill Men's Volleyball Team<br>
-      17 October 2026<br>
-      Southland Girls' High School<br>
-      Invercargill, New Zealand
-    </p>
+    for (let i = 0; i < text.length; i++) {
 
-  </footer>
+        const char = text[i];
+        const next = text[i + 1];
 
-
-  <script>
-
-    /*
-      PUBLIC GOOGLE SHEET
-      Only the Public Teams sheet is being used.
-    */
-
-    const sheetURL =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=1313713334&single=true&output=csv";
-
-
-    fetch(sheetURL)
-
-      .then(response => response.text())
-
-      .then(csv => {
-
-        const rows = csv
-          .trim()
-          .split("\n")
-          .map(row => row.split(","));
-
-        const container = document.getElementById("teams");
-
-        if (rows.length <= 1) {
-          return;
+        if (char === '"' && insideQuotes && next === '"') {
+            value += '"';
+            i++;
         }
 
-        container.innerHTML = "";
+        else if (char === '"') {
+            insideQuotes = !insideQuotes;
+        }
 
-        rows.slice(1).forEach((row, index) => {
+        else if (char === "," && !insideQuotes) {
+            row.push(value);
+            value = "";
+        }
 
-          const teamNumber = row[0] || index + 1;
-          const teamName = row[1] || "TBA";
-          const players = row[2] || "TBA";
+        else if ((char === "\n" || char === "\r") && !insideQuotes) {
 
-          const card = document.createElement("div");
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
 
-          card.className = "team-card";
+            row.push(value);
 
-          card.innerHTML = `
-            <div class="team-number">
-              TEAM ${teamNumber}
-            </div>
+            if (row.some(cell => cell.trim() !== "")) {
+                rows.push(row);
+            }
 
-            <div class="team-name">
-              ${teamName}
-            </div>
+            row = [];
+            value = "";
+        }
 
-            <div class="players">
-              Players:
-              <strong>${players}</strong>
-            </div>
-          `;
+        else {
+            value += char;
+        }
+    }
 
-          container.appendChild(card);
+    if (value !== "" || row.length > 0) {
+
+        row.push(value);
+
+        if (row.some(cell => cell.trim() !== "")) {
+            rows.push(row);
+        }
+    }
+
+    return rows;
+}
+
+
+async function loadTeams() {
+
+    try {
+
+        const response =
+            await fetch(csvURL + "&t=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("Could not load teams");
+        }
+
+        const text = await response.text();
+
+        const rows = parseCSV(text);
+
+        if (rows.length <= 1) {
+
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("empty").style.display = "block";
+
+            return;
+        }
+
+        const body =
+            document.getElementById("teamsBody");
+
+        body.innerHTML = "";
+
+        let teamCount = 0;
+
+        rows.slice(1).forEach(row => {
+
+            if (!row[1] || row[1].trim() === "") {
+                return;
+            }
+
+            teamCount++;
+
+            const tr = document.createElement("tr");
+
+            for (let i = 0; i < 3; i++) {
+
+                const td = document.createElement("td");
+
+                td.textContent =
+                    row[i] ? row[i].trim() : "";
+
+                tr.appendChild(td);
+            }
+
+            body.appendChild(tr);
 
         });
 
-      })
 
-      .catch(error => {
+        if (teamCount === 0) {
 
-        console.log("Unable to load teams:", error);
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("empty").style.display = "block";
 
-      });
+            return;
+        }
 
-  </script>
+
+        document.getElementById("loading").style.display = "none";
+
+        document.getElementById("teamsTable").style.display = "table";
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error").style.display = "block";
+
+    }
+
+}
+
+
+loadTeams();
+
+</script>
 
 </body>
 </html>
+
