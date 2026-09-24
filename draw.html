@@ -1,468 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Draw | Fundraising Tournament</title>
+<title>Tournament Draw | Invercargill Men's Volleyball Team</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+:root {
+    --maroon: #800020;
+    --dark-maroon: #570016;
+    --black: #090909;
+    --white: #ffffff;
+    --light: #f5f5f5;
+    --grey: #777777;
+}
 
-        :root {
-            --maroon: #800020;
-            --dark-maroon: #570016;
-            --black: #090909;
-            --white: #ffffff;
-            --light: #f5f5f5;
-            --grey: #777777;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--light);
-            color: #111;
-            line-height: 1.6;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: var(--light);
+    color: var(--black);
+}
 
-        /* NAVIGATION */
-        nav {
-            background: var(--black);
-            border-bottom: 4px solid var(--maroon);
-            padding: 18px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+nav {
+    background: var(--black);
+    padding: 18px 5%;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
 
-        .logo {
-            color: var(--white);
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
 
-        .logo span {
-            color: var(--maroon);
-        }
+nav a:hover {
+    color: #ffb3c6;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
+.hero {
+    background: linear-gradient(
+        rgba(128, 0, 32, 0.92),
+        rgba(87, 0, 22, 0.92)
+    );
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
 
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
 
-        nav ul li a:hover {
-            color: #d9a0ad;
-        }
+.hero p {
+    font-size: 18px;
+}
 
-        /* HERO */
-        .hero {
-            background:
-                linear-gradient(rgba(9,9,9,0.85), rgba(128,0,32,0.82)),
-                url("660125839_1535093435285887_6077932245051341909_n.jpg");
-            background-size: cover;
-            background-position: center;
-            min-height: 380px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px 20px;
-        }
+.container {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
 
-        .hero-content {
-            color: var(--white);
-        }
+.status {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--grey);
+}
 
-        .hero-content p {
-            letter-spacing: 3px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-        .hero-content h1 {
-            font-size: 58px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 20px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
 
-        .hero-content h1 span {
-            color: #d9a0ad;
-        }
+th {
+    background: var(--maroon);
+    color: white;
+    padding: 16px;
+    text-align: left;
+}
 
-        .hero-content .subtitle {
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
 
-        /* MAIN */
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 70px 25px;
-        }
+tr:hover {
+    background: #fafafa;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #eee;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 900;
-        }
+.empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--grey);
+}
 
-        .section-title h2 span {
-            color: var(--maroon);
-        }
+footer {
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 70px;
+    font-size: 14px;
+}
 
-        .section-title p {
-            color: var(--grey);
-            margin-top: 10px;
-        }
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 34px;
+    }
 
-        /* COMING SOON */
-        .coming-soon {
-            background: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 55px 30px;
-            border-top: 6px solid var(--maroon);
-            margin-bottom: 55px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
+    nav {
+        gap: 15px;
+    }
 
-        .coming-soon .icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .coming-soon h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .coming-soon h2 span {
-            color: #d9a0ad;
-        }
-
-        .coming-soon p {
-            color: #cccccc;
-            max-width: 650px;
-            margin: auto;
-        }
-
-        /* EVENT DETAILS */
-        .details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 55px;
-        }
-
-        .detail-card {
-            background: var(--white);
-            padding: 28px;
-            border-left: 6px solid var(--maroon);
-            box-shadow: 0 7px 22px rgba(0,0,0,0.07);
-        }
-
-        .detail-card h3 {
-            color: var(--maroon);
-            font-size: 14px;
-            letter-spacing: 1px;
-            margin-bottom: 7px;
-        }
-
-        .detail-card h4 {
-            font-size: 21px;
-        }
-
-        .detail-card p {
-            color: var(--grey);
-        }
-
-        /* POOL */
-        .pool {
-            background: var(--white);
-            box-shadow: 0 7px 22px rgba(0,0,0,0.07);
-            margin-bottom: 30px;
-        }
-
-        .pool-header {
-            background: var(--black);
-            color: var(--white);
-            padding: 18px 25px;
-            border-left: 6px solid var(--maroon);
-        }
-
-        .pool-header h3 {
-            font-size: 21px;
-        }
-
-        .pool-content {
-            padding: 25px;
-        }
-
-        .match {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            align-items: center;
-            gap: 15px;
-            padding: 18px 10px;
-            border-bottom: 1px solid #dddddd;
-            text-align: center;
-        }
-
-        .match:last-child {
-            border-bottom: none;
-        }
-
-        .team {
-            font-weight: bold;
-        }
-
-        .vs {
-            color: var(--maroon);
-            font-weight: 900;
-        }
-
-        .tba {
-            color: var(--grey);
-            font-style: italic;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 35px 20px;
-            border-top: 4px solid var(--maroon);
-        }
-
-        footer h3 {
-            margin-bottom: 8px;
-        }
-
-        footer p {
-            color: #bbbbbb;
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            .hero-content h1 {
-                font-size: 42px;
-            }
-
-            .details {
-                grid-template-columns: 1fr;
-            }
-
-            .match {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-
-            .vs {
-                order: 2;
-            }
-        }
-    </style>
+    nav a {
+        font-size: 12px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="register.html">REGISTER</a>
+    <a href="teams.html">TEAMS</a>
+    <a href="draw.html">DRAW</a>
+    <a href="results.html">RESULTS</a>
+    <a href="standings.html">STANDINGS</a>
+</nav>
 
-        <div class="logo">
-            INVERCARGILL <span>MEN'S</span> VOLLEYBALL
+<section class="hero">
+    <h1>TOURNAMENT DRAW</h1>
+    <p>Fundraising Tournament • 17 October 2026</p>
+</section>
+
+<div class="container">
+
+    <div class="status" id="status">
+        Loading tournament draw...
+    </div>
+
+    <div class="table-wrapper">
+        <table id="drawTable">
+            <thead>
+                <tr>
+                    <th>Match</th>
+                    <th>Pool</th>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                    <th>Time</th>
+                    <th>Court</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="drawBody">
+            </tbody>
+        </table>
+
+        <div class="empty" id="emptyMessage" style="display:none;">
+            <h2>DRAW COMING SOON</h2>
+            <p>The tournament draw will be published here once it is available.</p>
         </div>
+    </div>
 
-        <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="register.html">REGISTER</a></li>
-            <li></li><a href="teams.html">TEAMS</a></li>
-            <li><a href="draw.html">DRAW</a></li>
-            <li><a href="results.html">RESULTS</a></li>
-            <li><a href="standings.html">STANDINGS</a></li>
-        </ul>
+</div>
 
-    </nav>
+<footer>
+    <p>Invercargill Men's Volleyball Team</p>
+    <p>Fundraising Tournament • 17 October 2026</p>
+</footer>
 
+<script>
 
-    <!-- HERO -->
-    <section class="hero">
+const sheetURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=262302330&single=true&output=csv";
 
-        <div class="hero-content">
+async function loadDraw() {
 
-            <p>INVERCARGILL MEN'S VOLLEYBALL TEAM PRESENTS</p>
+    const status = document.getElementById("status");
+    const body = document.getElementById("drawBody");
+    const empty = document.getElementById("emptyMessage");
 
-            <h1>
-                TOURNAMENT <span>DRAW</span>
-            </h1>
+    try {
 
-            <div class="subtitle">
-                WHO WILL FACE WHO?
-            </div>
+        const response = await fetch(sheetURL);
 
-        </div>
+        if (!response.ok) {
+            throw new Error("Could not load draw");
+        }
 
-    </section>
+        const csv = await response.text();
 
+        const rows = csv
+            .trim()
+            .split("\n")
+            .map(row => row.split(","));
 
-    <!-- MAIN -->
-    <main class="container">
+        body.innerHTML = "";
 
-        <div class="section-title">
+        if (rows.length <= 1) {
 
-            <h2>TOURNAMENT <span>DRAW</span></h2>
+            status.textContent = "The tournament draw has not been published yet.";
+            empty.style.display = "block";
 
-            <p>
-                The official match schedule and team pools will be displayed here.
-            </p>
+            return;
+        }
 
-        </div>
+        status.textContent = "Current tournament draw";
 
+        rows.slice(1).forEach(row => {
 
-        <!-- COMING SOON -->
-        <div class="coming-soon">
+            if (row.length < 7) return;
 
-            <div class="icon">🏐</div>
+            const tr = document.createElement("tr");
 
-            <h2>DRAW <span>COMING SOON</span></h2>
+            row.slice(0, 7).forEach((cell, index) => {
 
-            <p>
-                The tournament draw will be released once team registrations
-                have been completed. Check back here for the official pools,
-                match schedule and game times.
-            </p>
+                const td = document.createElement("td");
 
-        </div>
+                if (index === 6) {
 
+                    const badge = document.createElement("span");
+                    badge.className = "badge";
+                    badge.textContent = cell.trim();
 
-        <!-- EVENT DETAILS -->
-        <div class="details">
+                    td.appendChild(badge);
 
-            <div class="detail-card">
+                } else {
 
-                <h3>TOURNAMENT DATE</h3>
+                    td.textContent = cell.trim();
 
-                <h4>17 OCTOBER 2026</h4>
+                }
 
-                <p>Saturday</p>
+                tr.appendChild(td);
 
-            </div>
+            });
 
+            body.appendChild(tr);
 
-            <div class="detail-card">
+        });
 
-                <h3>VENUE</h3>
+    } catch (error) {
 
-                <h4>SOUTHLAND GIRLS' HIGH SCHOOL</h4>
+        status.textContent =
+            "Unable to load the draw. Please try again later.";
 
-                <p>Invercargill, New Zealand</p>
+        empty.style.display = "block";
 
-            </div>
+        console.error(error);
+    }
+}
 
-        </div>
+loadDraw();
 
-
-        <!-- SAMPLE POOL -->
-        <div class="pool">
-
-            <div class="pool-header">
-
-                <h3>POOL A — TEAMS TBA</h3>
-
-            </div>
-
-            <div class="pool-content">
-
-                <div class="match">
-
-                    <div class="team tba">Team TBA</div>
-
-                    <div class="vs">VS</div>
-
-                    <div class="team tba">Team TBA</div>
-
-                </div>
-
-
-                <div class="match">
-
-                    <div class="team tba">Team TBA</div>
-
-                    <div class="vs">VS</div>
-
-                    <div class="team tba">Team TBA</div>
-
-                </div>
-
-
-                <div class="match">
-
-                    <div class="team tba">Team TBA</div>
-
-                    <div class="vs">VS</div>
-
-                    <div class="team tba">Team TBA</div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <h3>FUNDRAISING TOURNAMENT</h3>
-
-        <p>
-            Hosted by Invercargill Men's Volleyball Team
-        </p>
-
-        <p>
-            17 October 2026 • Southland Girls' High School • Invercargill, New Zealand
-        </p>
-
-    </footer>
+</script>
 
 </body>
 </html>
