@@ -1,178 +1,145 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Standings | Fundraising Tournament</title>
+    <title>Standings | Fundraising Tournament</title>
 
-<style>
-:root {
-    --maroon: #800020;
-    --dark-maroon: #570016;
-    --black: #090909;
-    --white: #ffffff;
-    --light: #f5f5f5;
-    --grey: #777777;
-}
+    <style>
+        :root {
+            --maroon: #800020;
+            --dark-maroon: #570016;
+            --black: #090909;
+            --white: #ffffff;
+            --light: #f5f5f5;
+            --grey: #777777;
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--light);
-    color: var(--black);
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--black);
+        }
 
-nav {
-    background: var(--black);
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-    padding: 18px 10px;
-}
+        nav {
+            background: var(--black);
+            padding: 20px;
+            text-align: center;
+        }
 
-nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 13px;
-    padding: 10px 15px;
-    transition: 0.3s;
-}
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-nav a:hover {
-    background: var(--maroon);
-}
+        nav a:hover {
+            color: #800020;
+        }
 
-.hero {
-    background: linear-gradient(
-        rgba(0,0,0,0.75),
-        rgba(87,0,22,0.85)
-    );
-    color: white;
-    text-align: center;
-    padding: 75px 20px;
-}
+        .hero {
+            background: linear-gradient(
+                rgba(87, 0, 22, 0.92),
+                rgba(9, 9, 9, 0.92)
+            );
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
 
-.hero h1 {
-    font-size: clamp(38px, 7vw, 70px);
-    font-weight: 900;
-    letter-spacing: 2px;
-}
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
 
-.hero p {
-    margin-top: 12px;
-    font-size: 16px;
-    letter-spacing: 2px;
-}
+        .hero p {
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
 
-.container {
-    max-width: 1100px;
-    margin: 50px auto;
-    padding: 0 20px;
-}
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
 
-.status {
-    text-align: center;
-    color: var(--grey);
-    margin-bottom: 20px;
-}
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
 
-.table-container {
-    background: var(--white);
-    border-radius: 12px;
-    overflow-x: auto;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 700px;
-}
+        th {
+            background: var(--maroon);
+            color: white;
+            padding: 16px 12px;
+            text-align: center;
+            font-size: 14px;
+        }
 
-thead {
-    background: var(--maroon);
-    color: white;
-}
+        td {
+            padding: 15px 12px;
+            text-align: center;
+            border-bottom: 1px solid #eeeeee;
+        }
 
-th,
-td {
-    padding: 16px 14px;
-    text-align: center;
-    border-bottom: 1px solid #eeeeee;
-}
+        tr:last-child td {
+            border-bottom: none;
+        }
 
-th {
-    font-size: 13px;
-    letter-spacing: 1px;
-}
+        tr:hover {
+            background: #fafafa;
+        }
 
-td {
-    font-size: 15px;
-}
+        td:nth-child(2) {
+            font-weight: bold;
+            text-align: left;
+        }
 
-td:nth-child(2) {
-    text-align: left;
-    font-weight: bold;
-}
+        .loading,
+        .error,
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: var(--grey);
+        }
 
-tbody tr:hover {
-    background: #fafafa;
-}
+        footer {
+            background: var(--black);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
 
-.pos {
-    font-weight: 900;
-    color: var(--maroon);
-}
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 34px;
+            }
 
-.points {
-    font-weight: 900;
-    font-size: 17px;
-}
-
-footer {
-    margin-top: 70px;
-    background: var(--black);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 13px;
-}
-
-@media (max-width: 600px) {
-
-    nav {
-        gap: 0;
-    }
-
-    nav a {
-        font-size: 11px;
-        padding: 9px 8px;
-    }
-
-    .hero {
-        padding: 55px 15px;
-    }
-
-    .container {
-        margin: 35px auto;
-        padding: 0 12px;
-    }
-
-    th,
-    td {
-        padding: 12px 10px;
-    }
-}
-</style>
+            nav a {
+                display: inline-block;
+                margin: 6px 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -193,42 +160,53 @@ footer {
 
 <div class="container">
 
-    <p class="status" id="status">
-        Loading standings...
-    </p>
-
     <div class="table-container">
-        <table>
+
+        <div id="loading" class="loading">
+            Loading standings...
+        </div>
+
+        <div id="error" class="error" style="display:none;">
+            Unable to load standings.
+        </div>
+
+        <div id="empty" class="empty" style="display:none;">
+            No standings available yet.
+        </div>
+
+        <table id="standingsTable" style="display:none;">
+
             <thead>
                 <tr>
-                    <th>POS</th>
+                    <th>POSITION</th>
                     <th>TEAM</th>
                     <th>PLAYED</th>
                     <th>WINS</th>
                     <th>LOSSES</th>
-                    <th>SETS +</th>
-                    <th>SETS -</th>
+                    <th>SETS WON</th>
+                    <th>SETS LOST</th>
                     <th>POINTS</th>
                 </tr>
             </thead>
 
-            <tbody id="standingsTable">
-            </tbody>
+            <tbody id="standingsBody"></tbody>
+
         </table>
+
     </div>
 
 </div>
 
 <footer>
-    <strong>Invercargill Men's Volleyball Team</strong><br>
-    Fundraising Tournament • 17 October 2026<br>
-    Southland Girls' High School
+    <p>© 2026 Invercargill Men's Volleyball Team</p>
+    <p>Fundraising Tournament • Invercargill, New Zealand</p>
 </footer>
 
 <script>
 
 const csvURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=722060066&single=true&output=csv";
+
 
 function parseCSV(text) {
 
@@ -252,7 +230,7 @@ function parseCSV(text) {
         }
 
         else if (char === "," && !insideQuotes) {
-            row.push(value.trim());
+            row.push(value);
             value = "";
         }
 
@@ -262,14 +240,14 @@ function parseCSV(text) {
                 i++;
             }
 
-            row.push(value.trim());
-            value = "";
+            row.push(value);
 
-            if (row.some(cell => cell !== "")) {
+            if (row.some(cell => cell.trim() !== "")) {
                 rows.push(row);
             }
 
             row = [];
+            value = "";
         }
 
         else {
@@ -278,9 +256,9 @@ function parseCSV(text) {
     }
 
     if (value !== "" || row.length > 0) {
-        row.push(value.trim());
+        row.push(value);
 
-        if (row.some(cell => cell !== "")) {
+        if (row.some(cell => cell.trim() !== "")) {
             rows.push(row);
         }
     }
@@ -288,60 +266,75 @@ function parseCSV(text) {
     return rows;
 }
 
+
 async function loadStandings() {
 
     try {
 
-        const response = await fetch(csvURL);
+        const response = await fetch(csvURL + "&t=" + Date.now());
 
         if (!response.ok) {
-            throw new Error("Unable to load standings");
+            throw new Error("Could not load standings");
         }
 
         const text = await response.text();
+
         const rows = parseCSV(text);
-
-        const table = document.getElementById("standingsTable");
-        const status = document.getElementById("status");
-
-        table.innerHTML = "";
 
         if (rows.length <= 1) {
 
-            status.textContent = "Standings will appear once matches have been played.";
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("empty").style.display = "block";
+
             return;
         }
 
+        const body = document.getElementById("standingsBody");
+
+        body.innerHTML = "";
+
         rows.slice(1).forEach(row => {
 
-            if (!row[1]) return;
+            if (!row[1] || row[1].trim() === "") {
+                return;
+            }
 
             const tr = document.createElement("tr");
 
-            tr.innerHTML = `
-                <td class="pos">${row[0] || ""}</td>
-                <td>${row[1] || ""}</td>
-                <td>${row[2] || "0"}</td>
-                <td>${row[3] || "0"}</td>
-                <td>${row[4] || "0"}</td>
-                <td>${row[5] || "0"}</td>
-                <td>${row[6] || "0"}</td>
-                <td class="points">${row[7] || "0"}</td>
-            `;
+            row.slice(0, 8).forEach((cell, index) => {
 
-            table.appendChild(tr);
+                const td = document.createElement("td");
+
+                td.textContent = cell.trim();
+
+                if (index === 0) {
+                    td.style.fontWeight = "bold";
+                }
+
+                tr.appendChild(td);
+
+            });
+
+            body.appendChild(tr);
+
         });
 
-        status.textContent = "Live standings";
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("standingsTable").style.display = "table";
 
-    } catch (error) {
+    }
 
-        document.getElementById("status").textContent =
-            "Unable to load standings right now.";
+    catch (error) {
 
         console.error(error);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error").style.display = "block";
+
     }
+
 }
+
 
 loadStandings();
 
@@ -349,4 +342,4 @@ loadStandings();
 
 </body>
 </html>
-```
+
