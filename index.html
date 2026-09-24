@@ -24,10 +24,6 @@
             color: #111111;
         }
 
-        /* =========================
-           COLOURS
-        ========================= */
-
         :root {
             --maroon: #800020;
             --dark-maroon: #570016;
@@ -149,7 +145,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .event-detail {
@@ -169,6 +165,49 @@
             display: block;
             color: #dddddd;
             margin-top: 5px;
+        }
+
+
+        /* =========================
+           COUNTDOWN
+        ========================= */
+
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0 35px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            min-width: 90px;
+            padding: 15px 18px;
+
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(255,255,255,0.3);
+
+            border-radius: 6px;
+
+            text-align: center;
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .countdown-box small {
+            display: block;
+            margin-top: 5px;
+
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+
+            color: #dddddd;
         }
 
 
@@ -267,7 +306,7 @@
 
 
         /* =========================
-           EVENT INFO
+           EVENT INFORMATION
         ========================= */
 
         .info-section {
@@ -524,6 +563,20 @@
             .cta h2 {
                 font-size: 35px;
             }
+
+            #countdown {
+                gap: 7px;
+            }
+
+            .countdown-box {
+                min-width: 70px;
+                padding: 12px 10px;
+            }
+
+            .countdown-box span {
+                font-size: 24px;
+            }
+
         }
 
     </style>
@@ -597,6 +650,35 @@
                 <div class="event-detail">
                     <strong>📍 SOUTHLAND GIRLS' HIGH SCHOOL</strong>
                     <small>Invercargill, New Zealand</small>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 COUNTDOWN
+            ========================= -->
+
+            <div id="countdown">
+
+                <div class="countdown-box">
+                    <span id="days">00</span>
+                    <small>DAYS</small>
+                </div>
+
+                <div class="countdown-box">
+                    <span id="hours">00</span>
+                    <small>HOURS</small>
+                </div>
+
+                <div class="countdown-box">
+                    <span id="minutes">00</span>
+                    <small>MINUTES</small>
+                </div>
+
+                <div class="countdown-box">
+                    <span id="seconds">00</span>
+                    <small>SECONDS</small>
                 </div>
 
             </div>
@@ -832,7 +914,7 @@
             <div class="gallery-item">
 
                 <img
-                    src="713424408_28162406346680744_680431919983709826_n.jpg"
+                    src="713424408_28162406346680744_680431919983709826_ n.jpg"
                     alt="Volleyball tournament action"
                 >
 
@@ -903,11 +985,80 @@
     </footer>
 
 
+
+    <!-- =========================
+         COUNTDOWN SCRIPT
+    ========================= -->
+
+    <script>
+
+        const tournamentDate =
+            new Date("October 17, 2026 09:00:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now = new Date().getTime();
+
+            const difference = tournamentDate - now;
+
+
+            if (difference <= 0) {
+
+                document.getElementById("countdown").innerHTML =
+                    "<div class='countdown-box'>" +
+                    "<span>🏐</span>" +
+                    "<small>TOURNAMENT DAY</small>" +
+                    "</div>";
+
+                return;
+            }
+
+
+            const days = Math.floor(
+                difference / (1000 * 60 * 60 * 24)
+            );
+
+
+            const hours = Math.floor(
+                (difference % (1000 * 60 * 60 * 24))
+                / (1000 * 60 * 60)
+            );
+
+
+            const minutes = Math.floor(
+                (difference % (1000 * 60 * 60))
+                / (1000 * 60)
+            );
+
+
+            const seconds = Math.floor(
+                (difference % (1000 * 60))
+                / 1000
+            );
+
+
+            document.getElementById("days").textContent =
+                String(days).padStart(2, "0");
+
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+
+        }
+
+
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+    </script>
+
+
 </body>
-</html>
-
-    </footer>
-
-</body>
-
 </html>
