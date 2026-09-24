@@ -1,516 +1,352 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Standings | Fundraising Tournament</title>
+<title>Standings | Fundraising Tournament</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+:root {
+    --maroon: #800020;
+    --dark-maroon: #570016;
+    --black: #090909;
+    --white: #ffffff;
+    --light: #f5f5f5;
+    --grey: #777777;
+}
 
-        :root {
-            --maroon: #800020;
-            --dark-maroon: #570016;
-            --black: #090909;
-            --white: #ffffff;
-            --light: #f5f5f5;
-            --grey: #777777;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--light);
-            color: #111;
-            line-height: 1.6;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: var(--black);
+}
 
-        /* NAVIGATION */
-        nav {
-            background: var(--black);
-            border-bottom: 4px solid var(--maroon);
-            padding: 18px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+nav {
+    background: var(--black);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 18px 10px;
+}
 
-        .logo {
-            color: var(--white);
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
 
-        .logo span {
-            color: var(--maroon);
-        }
+nav a:hover {
+    background: var(--maroon);
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
+.hero {
+    background: linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(87,0,22,0.85)
+    );
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
 
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+.hero h1 {
+    font-size: clamp(38px, 7vw, 70px);
+    font-weight: 900;
+    letter-spacing: 2px;
+}
 
-        nav ul li a:hover {
-            color: #d9a0ad;
-        }
+.hero p {
+    margin-top: 12px;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
 
-        /* HERO */
-        .hero {
-            background:
-                linear-gradient(rgba(9,9,9,0.85), rgba(128,0,32,0.82)),
-                url("660125839_1535093435285887_6077932245051341909_n.jpg");
-            background-size: cover;
-            background-position: center;
-            min-height: 380px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px 20px;
-        }
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
 
-        .hero-content {
-            color: var(--white);
-        }
+.status {
+    text-align: center;
+    color: var(--grey);
+    margin-bottom: 20px;
+}
 
-        .hero-content p {
-            letter-spacing: 3px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.table-container {
+    background: var(--white);
+    border-radius: 12px;
+    overflow-x: auto;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
 
-        .hero-content h1 {
-            font-size: 58px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 20px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
 
-        .hero-content h1 span {
-            color: #d9a0ad;
-        }
+thead {
+    background: var(--maroon);
+    color: white;
+}
 
-        .hero-content .subtitle {
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
+th,
+td {
+    padding: 16px 14px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+}
 
-        /* MAIN */
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 70px 25px;
-        }
+th {
+    font-size: 13px;
+    letter-spacing: 1px;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
+td {
+    font-size: 15px;
+}
 
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 900;
-        }
+td:nth-child(2) {
+    text-align: left;
+    font-weight: bold;
+}
 
-        .section-title h2 span {
-            color: var(--maroon);
-        }
+tbody tr:hover {
+    background: #fafafa;
+}
 
-        .section-title p {
-            color: var(--grey);
-            margin-top: 10px;
-        }
+.pos {
+    font-weight: 900;
+    color: var(--maroon);
+}
 
-        /* COMING SOON */
-        .coming-soon {
-            background: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 55px 30px;
-            border-top: 6px solid var(--maroon);
-            margin-bottom: 55px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
+.points {
+    font-weight: 900;
+    font-size: 17px;
+}
 
-        .coming-soon .icon {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
+footer {
+    margin-top: 70px;
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 13px;
+}
 
-        .coming-soon h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
+@media (max-width: 600px) {
 
-        .coming-soon h2 span {
-            color: #d9a0ad;
-        }
+    nav {
+        gap: 0;
+    }
 
-        .coming-soon p {
-            color: #cccccc;
-            max-width: 700px;
-            margin: auto;
-        }
+    nav a {
+        font-size: 11px;
+        padding: 9px 8px;
+    }
 
-        /* EVENT DETAILS */
-        .details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 55px;
-        }
+    .hero {
+        padding: 55px 15px;
+    }
 
-        .detail-card {
-            background: var(--white);
-            padding: 28px;
-            border-left: 6px solid var(--maroon);
-            box-shadow: 0 7px 22px rgba(0,0,0,0.07);
-        }
+    .container {
+        margin: 35px auto;
+        padding: 0 12px;
+    }
 
-        .detail-card h3 {
-            color: var(--maroon);
-            font-size: 14px;
-            letter-spacing: 1px;
-            margin-bottom: 7px;
-        }
-
-        .detail-card h4 {
-            font-size: 21px;
-        }
-
-        .detail-card p {
-            color: var(--grey);
-        }
-
-        /* STANDINGS TABLE */
-        .table-container {
-            background: var(--white);
-            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
-            overflow-x: auto;
-        }
-
-        .table-header {
-            background: var(--black);
-            color: var(--white);
-            padding: 18px 25px;
-            border-left: 6px solid var(--maroon);
-        }
-
-        .table-header h3 {
-            font-size: 21px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 650px;
-        }
-
-        th {
-            background: var(--maroon);
-            color: var(--white);
-            padding: 16px 12px;
-            text-align: center;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-        }
-
-        td {
-            padding: 18px 12px;
-            text-align: center;
-            border-bottom: 1px solid #dddddd;
-            font-weight: bold;
-        }
-
-        td:first-child {
-            color: var(--maroon);
-        }
-
-        td.team-name {
-            text-align: left;
-        }
-
-        .tba {
-            color: var(--grey);
-            font-style: italic;
-            font-weight: normal;
-        }
-
-        /* LEGEND */
-        .legend {
-            margin-top: 25px;
-            color: var(--grey);
-            font-size: 14px;
-            text-align: center;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 35px 20px;
-            border-top: 4px solid var(--maroon);
-        }
-
-        footer h3 {
-            margin-bottom: 8px;
-        }
-
-        footer p {
-            color: #bbbbbb;
-            font-size: 14px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            .hero-content h1 {
-                font-size: 42px;
-            }
-
-            .details {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
-                padding: 50px 15px;
-            }
-        }
-    </style>
+    th,
+    td {
+        padding: 12px 10px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
+<nav>
+    <a href="index.html">HOME</a>
+    <a href="register.html">REGISTER</a>
+    <a href="teams.html">TEAMS</a>
+    <a href="draw.html">DRAW</a>
+    <a href="results.html">RESULTS</a>
+    <a href="standings.html">STANDINGS</a>
+</nav>
+
+<section class="hero">
+    <h1>TEAM STANDINGS</h1>
+    <p>FUNDRAISING TOURNAMENT • 17 OCTOBER 2026</p>
+</section>
+
+<div class="container">
+
+    <p class="status" id="status">
+        Loading standings...
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>POS</th>
+                    <th>TEAM</th>
+                    <th>PLAYED</th>
+                    <th>WINS</th>
+                    <th>LOSSES</th>
+                    <th>SETS +</th>
+                    <th>SETS -</th>
+                    <th>POINTS</th>
+                </tr>
+            </thead>
 
-        <div class="logo">
-            INVERCARGILL <span>MEN'S</span> VOLLEYBALL
-        </div>
+            <tbody id="standingsTable">
+            </tbody>
+        </table>
+    </div>
 
-        <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="register.html">REGISTER</a></li>
-            <li></li><a href="teams.html">TEAMS</a></li>
-            <li><a href="draw.html">DRAW</a></li>
-            <li><a href="results.html">RESULTS</a></li>
-            <li><a href="standings.html">STANDINGS</a></li>
-        </ul>
+</div>
 
-    </nav>
+<footer>
+    <strong>Invercargill Men's Volleyball Team</strong><br>
+    Fundraising Tournament • 17 October 2026<br>
+    Southland Girls' High School
+</footer>
 
+<script>
 
-    <!-- HERO -->
-    <section class="hero">
+const csvURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=722060066&single=true&output=csv";
 
-        <div class="hero-content">
+function parseCSV(text) {
 
-            <p>INVERCARGILL MEN'S VOLLEYBALL TEAM PRESENTS</p>
+    const rows = [];
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
 
-            <h1>
-                TEAM <span>STANDINGS</span>
-            </h1>
+    for (let i = 0; i < text.length; i++) {
 
-            <div class="subtitle">
-                EVERY SET • EVERY POINT • EVERY MATCH
-            </div>
+        const char = text[i];
+        const next = text[i + 1];
 
-        </div>
+        if (char === '"' && insideQuotes && next === '"') {
+            value += '"';
+            i++;
+        }
 
-    </section>
+        else if (char === '"') {
+            insideQuotes = !insideQuotes;
+        }
 
+        else if (char === "," && !insideQuotes) {
+            row.push(value.trim());
+            value = "";
+        }
 
-    <!-- MAIN -->
-    <main class="container">
+        else if ((char === "\n" || char === "\r") && !insideQuotes) {
 
-        <div class="section-title">
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
 
-            <h2>TOURNAMENT <span>STANDINGS</span></h2>
+            row.push(value.trim());
+            value = "";
 
-            <p>
-                Follow team performance throughout the Fundraising Tournament.
-            </p>
+            if (row.some(cell => cell !== "")) {
+                rows.push(row);
+            }
 
-        </div>
+            row = [];
+        }
 
+        else {
+            value += char;
+        }
+    }
 
-        <!-- COMING SOON -->
-        <div class="coming-soon">
+    if (value !== "" || row.length > 0) {
+        row.push(value.trim());
 
-            <div class="icon">🏆</div>
+        if (row.some(cell => cell !== "")) {
+            rows.push(row);
+        }
+    }
 
-            <h2>STANDINGS <span>COMING SOON</span></h2>
+    return rows;
+}
 
-            <p>
-                Team standings will be updated once matches begin.
-                Check back during the tournament to see the latest rankings,
-                wins, losses, sets and points.
-            </p>
+async function loadStandings() {
 
-        </div>
+    try {
 
+        const response = await fetch(csvURL);
 
-        <!-- EVENT DETAILS -->
-        <div class="details">
+        if (!response.ok) {
+            throw new Error("Unable to load standings");
+        }
 
-            <div class="detail-card">
+        const text = await response.text();
+        const rows = parseCSV(text);
 
-                <h3>TOURNAMENT DATE</h3>
+        const table = document.getElementById("standingsTable");
+        const status = document.getElementById("status");
 
-                <h4>17 OCTOBER 2026</h4>
+        table.innerHTML = "";
 
-                <p>Saturday</p>
+        if (rows.length <= 1) {
 
-            </div>
+            status.textContent = "Standings will appear once matches have been played.";
+            return;
+        }
 
+        rows.slice(1).forEach(row => {
 
-            <div class="detail-card">
+            if (!row[1]) return;
 
-                <h3>VENUE</h3>
+            const tr = document.createElement("tr");
 
-                <h4>SOUTHLAND GIRLS' HIGH SCHOOL</h4>
+            tr.innerHTML = `
+                <td class="pos">${row[0] || ""}</td>
+                <td>${row[1] || ""}</td>
+                <td>${row[2] || "0"}</td>
+                <td>${row[3] || "0"}</td>
+                <td>${row[4] || "0"}</td>
+                <td>${row[5] || "0"}</td>
+                <td>${row[6] || "0"}</td>
+                <td class="points">${row[7] || "0"}</td>
+            `;
 
-                <p>Invercargill, New Zealand</p>
+            table.appendChild(tr);
+        });
 
-            </div>
+        status.textContent = "Live standings";
 
-        </div>
+    } catch (error) {
 
+        document.getElementById("status").textContent =
+            "Unable to load standings right now.";
 
-        <!-- STANDINGS -->
-        <div class="table-container">
+        console.error(error);
+    }
+}
 
-            <div class="table-header">
+loadStandings();
 
-                <h3>POOL A — CURRENT STANDINGS</h3>
-
-            </div>
-
-
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>POS</th>
-                        <th>TEAM</th>
-                        <th>P</th>
-                        <th>W</th>
-                        <th>L</th>
-                        <th>SETS +</th>
-                        <th>SETS -</th>
-                        <th>PTS</th>
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    <tr>
-                        <td>1</td>
-                        <td class="team-name tba">Team TBA</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td class="team-name tba">Team TBA</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td class="team-name tba">Team TBA</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td class="team-name tba">Team TBA</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                        <td class="tba">-</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <p class="legend">
-            P = Played &nbsp; | &nbsp;
-            W = Wins &nbsp; | &nbsp;
-            L = Losses &nbsp; | &nbsp;
-            PTS = Points
-        </p>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <h3>FUNDRAISING TOURNAMENT</h3>
-
-        <p>
-            Hosted by Invercargill Men's Volleyball Team
-        </p>
-
-        <p>
-            17 October 2026 • Southland Girls' High School • Invercargill, New Zealand
-        </p>
-
-    </footer>
+</script>
 
 </body>
 </html>
+```
