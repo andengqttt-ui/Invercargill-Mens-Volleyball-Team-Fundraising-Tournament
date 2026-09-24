@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tournament Draw | Invercargill Men's Volleyball Team</title>
+<title>Draw | Fundraising Tournament</title>
 
 <style>
 :root {
@@ -17,68 +17,101 @@
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: var(--light);
     color: var(--black);
 }
 
+/* NAVIGATION */
 nav {
     background: var(--black);
-    padding: 18px 5%;
+    padding: 20px 7%;
     display: flex;
-    justify-content: center;
-    gap: 28px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav div {
+    display: flex;
+    gap: 25px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
     font-size: 14px;
+    font-weight: bold;
 }
 
 nav a:hover {
-    color: #ffb3c6;
+    color: #c00030;
 }
 
+/* HERO */
 .hero {
-    background: linear-gradient(
-        rgba(128, 0, 32, 0.92),
-        rgba(87, 0, 22, 0.92)
-    );
-    color: white;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("660125839_1535093435285887_6077932245051341909_n.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    min-height: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 70px 20px;
+    color: white;
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 12px;
+    font-size: 50px;
+    letter-spacing: 3px;
 }
 
 .hero p {
-    font-size: 18px;
+    margin-top: 12px;
+    font-size: 17px;
 }
 
+/* CONTENT */
 .container {
-    max-width: 1100px;
-    margin: 45px auto;
-    padding: 0 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
 }
 
-.status {
+.section-title {
     text-align: center;
-    margin-bottom: 25px;
-    color: var(--grey);
+    margin-bottom: 30px;
 }
 
+.section-title h2 {
+    color: var(--maroon);
+    font-size: 32px;
+}
+
+.section-title p {
+    color: var(--grey);
+    margin-top: 10px;
+}
+
+/* TABLE */
 .table-wrapper {
     overflow-x: auto;
     background: white;
@@ -89,60 +122,79 @@ nav a:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 700px;
+    min-width: 750px;
 }
 
 th {
     background: var(--maroon);
     color: white;
-    padding: 16px;
-    text-align: left;
+    padding: 16px 12px;
+    text-align: center;
+    font-size: 14px;
 }
 
 td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
 }
 
 tr:hover {
     background: #fafafa;
 }
 
-.badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 20px;
-    background: #eee;
-    font-size: 12px;
+td:nth-child(3),
+td:nth-child(4) {
     font-weight: bold;
 }
 
-.empty {
+/* STATUS */
+.status {
+    font-weight: bold;
+}
+
+/* LOADING */
+.loading {
+    padding: 30px;
     text-align: center;
-    padding: 50px 20px;
     color: var(--grey);
 }
 
+/* FOOTER */
 footer {
     background: var(--black);
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 30px 20px;
     margin-top: 70px;
+}
+
+footer p {
+    margin: 5px;
     font-size: 14px;
 }
 
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: 34px;
-    }
+/* MOBILE */
+@media (max-width: 800px) {
 
     nav {
+        flex-direction: column;
         gap: 15px;
     }
 
-    nav a {
-        font-size: 12px;
+    nav div {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .container {
+        width: 95%;
     }
 }
 </style>
@@ -150,29 +202,59 @@ footer {
 
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-    <a href="index.html">HOME</a>
-    <a href="register.html">REGISTER</a>
-    <a href="teams.html">TEAMS</a>
-    <a href="draw.html">DRAW</a>
-    <a href="results.html">RESULTS</a>
-    <a href="standings.html">STANDINGS</a>
-</nav>
 
-<section class="hero">
-    <h1>TOURNAMENT DRAW</h1>
-    <p>Fundraising Tournament • 17 October 2026</p>
-</section>
-
-<div class="container">
-
-    <div class="status" id="status">
-        Loading tournament draw...
+    <div class="logo">
+        FUNDRAISING
     </div>
 
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="register.html">REGISTER</a>
+        <a href="teams.html">TEAMS</a>
+        <a href="draw.html">DRAW</a>
+        <a href="results.html">RESULTS</a>
+        <a href="standings.html">STANDINGS</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div>
+        <h1>TOURNAMENT DRAW</h1>
+
+        <p>
+            FUNDRAISING TOURNAMENT • 17 OCTOBER 2026
+        </p>
+    </div>
+
+</section>
+
+
+<!-- DRAW -->
+<section class="container">
+
+    <div class="section-title">
+
+        <h2>Match Schedule</h2>
+
+        <p>
+            Check the match time, court and teams below.
+        </p>
+
+    </div>
+
+
     <div class="table-wrapper">
-        <table id="drawTable">
+
+        <table>
+
             <thead>
+
                 <tr>
                     <th>Match</th>
                     <th>Pool</th>
@@ -182,107 +264,251 @@ footer {
                     <th>Court</th>
                     <th>Status</th>
                 </tr>
+
             </thead>
 
-            <tbody id="drawBody">
+            <tbody id="drawTable">
+
+                <tr>
+                    <td colspan="7" class="loading">
+                        Loading draw...
+                    </td>
+                </tr>
+
             </tbody>
+
         </table>
 
-        <div class="empty" id="emptyMessage" style="display:none;">
-            <h2>DRAW COMING SOON</h2>
-            <p>The tournament draw will be published here once it is available.</p>
-        </div>
     </div>
 
-</div>
+</section>
 
+
+<!-- FOOTER -->
 <footer>
-    <p>Invercargill Men's Volleyball Team</p>
-    <p>Fundraising Tournament • 17 October 2026</p>
+
+    <p><strong>Fundraising Tournament</strong></p>
+
+    <p>
+        Hosted by Invercargill Men's Volleyball Team
+    </p>
+
+    <p>
+        17 October 2026 • Southland Girls' High School
+    </p>
+
 </footer>
+
 
 <script>
 
-const sheetURL =
+const csvURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vQj118-dMefVDsKXbr-K30lyisKC7mTx99cfYumLB1oMJ_SYrRbU8fjHl_3vsG7HgAz6-bY8brrHK30/pub?gid=262302330&single=true&output=csv";
 
-async function loadDraw() {
 
-    const status = document.getElementById("status");
-    const body = document.getElementById("drawBody");
-    const empty = document.getElementById("emptyMessage");
+function parseCSV(text) {
 
-    try {
+    const rows = [];
 
-        const response = await fetch(sheetURL);
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
 
-        if (!response.ok) {
-            throw new Error("Could not load draw");
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+
+            value += '"';
+            i++;
+
+        } else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        } else if (char === ',' && !insideQuotes) {
+
+            row.push(value);
+            value = "";
+
+        } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+
+            if (char === '\r' && next === '\n') {
+                i++;
+            }
+
+            row.push(value);
+
+            if (row.some(cell => cell.trim() !== "")) {
+                rows.push(row);
+            }
+
+            row = [];
+            value = "";
+
+        } else {
+
+            value += char;
+
         }
 
-        const csv = await response.text();
+    }
 
-        const rows = csv
-            .trim()
-            .split("\n")
-            .map(row => row.split(","));
+    if (value !== "" || row.length > 0) {
 
-        body.innerHTML = "";
+        row.push(value);
+
+        if (row.some(cell => cell.trim() !== "")) {
+            rows.push(row);
+        }
+
+    }
+
+    return rows;
+}
+
+
+/* Convert Google Sheets time values into normal time */
+function formatTime(value) {
+
+    if (!value) {
+        return "";
+    }
+
+    value = value.trim();
+
+    /*
+       Google Sheets may return times as decimals.
+
+       Example:
+       0.375 = 9:00 AM
+    */
+
+    const number = Number(value);
+
+    if (!isNaN(number) && number >= 0 && number < 1) {
+
+        const totalMinutes = Math.round(number * 24 * 60);
+
+        let hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+
+        const period = hours >= 12 ? "PM" : "AM";
+
+        hours = hours % 12;
+
+        if (hours === 0) {
+            hours = 12;
+        }
+
+        return `${hours}:${String(minutes).padStart(2, "0")} ${period}`;
+    }
+
+    return value;
+}
+
+
+fetch(csvURL + "&t=" + new Date().getTime())
+
+    .then(response => response.text())
+
+    .then(csv => {
+
+        const rows = parseCSV(csv);
+
+        const table = document.getElementById("drawTable");
+
+        table.innerHTML = "";
 
         if (rows.length <= 1) {
 
-            status.textContent = "The tournament draw has not been published yet.";
-            empty.style.display = "block";
+            table.innerHTML = `
+                <tr>
+                    <td colspan="7">
+                        The tournament draw is not available yet.
+                    </td>
+                </tr>
+            `;
 
             return;
         }
 
-        status.textContent = "Current tournament draw";
 
-        rows.slice(1).forEach(row => {
+        // Skip header row
+        for (let i = 1; i < rows.length; i++) {
 
-            if (row.length < 7) return;
+            const row = rows[i];
+
+            if (!row[0] || row[0].trim() === "") {
+                continue;
+            }
 
             const tr = document.createElement("tr");
 
-            row.slice(0, 7).forEach((cell, index) => {
 
-                const td = document.createElement("td");
+            // Match
+            let td = document.createElement("td");
+            td.textContent = row[0] || "";
+            tr.appendChild(td);
 
-                if (index === 6) {
 
-                    const badge = document.createElement("span");
-                    badge.className = "badge";
-                    badge.textContent = cell.trim();
+            // Pool
+            td = document.createElement("td");
+            td.textContent = row[1] || "";
+            tr.appendChild(td);
 
-                    td.appendChild(badge);
 
-                } else {
+            // Team 1
+            td = document.createElement("td");
+            td.textContent = row[2] || "";
+            tr.appendChild(td);
 
-                    td.textContent = cell.trim();
 
-                }
+            // Team 2
+            td = document.createElement("td");
+            td.textContent = row[3] || "";
+            tr.appendChild(td);
 
-                tr.appendChild(td);
 
-            });
+            // Time
+            td = document.createElement("td");
+            td.textContent = formatTime(row[4]);
+            tr.appendChild(td);
 
-            body.appendChild(tr);
 
-        });
+            // Court
+            td = document.createElement("td");
+            td.textContent = row[5] || "";
+            tr.appendChild(td);
 
-    } catch (error) {
 
-        status.textContent =
-            "Unable to load the draw. Please try again later.";
+            // Status
+            td = document.createElement("td");
+            td.textContent = row[6] || "";
+            td.className = "status";
+            tr.appendChild(td);
 
-        empty.style.display = "block";
+
+            table.appendChild(tr);
+        }
+
+    })
+
+    .catch(error => {
 
         console.error(error);
-    }
-}
 
-loadDraw();
+        document.getElementById("drawTable").innerHTML = `
+            <tr>
+                <td colspan="7">
+                    Unable to load the tournament draw.
+                </td>
+            </tr>
+        `;
+
+    });
 
 </script>
 
