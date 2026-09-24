@@ -1,206 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Standings | Fundraising Tournament</title>
+<title>Standings | Fundraising Tournament</title>
 
-    <style>
-        :root {
-            --maroon: #800020;
-            --dark-maroon: #570016;
-            --black: #090909;
-            --white: #ffffff;
-            --light: #f5f5f5;
-            --grey: #777777;
-        }
+<style>
+:root {
+    --maroon: #800020;
+    --dark-maroon: #570016;
+    --black: #090909;
+    --white: #ffffff;
+    --light: #f5f5f5;
+    --grey: #777777;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--light);
-            color: var(--black);
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light);
+    color: var(--black);
+}
 
-        nav {
-            background: var(--black);
-            padding: 20px;
-            text-align: center;
-        }
+/* NAVIGATION */
+nav {
+    background: var(--black);
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.logo {
+    color: var(--white);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-        nav a:hover {
-            color: #800020;
-        }
+nav div {
+    display: flex;
+    gap: 25px;
+}
 
-        .hero {
-            background: linear-gradient(
-                rgba(87, 0, 22, 0.92),
-                rgba(9, 9, 9, 0.92)
-            );
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
+nav a:hover {
+    color: #c00030;
+}
 
-        .hero p {
-            font-size: 18px;
-            letter-spacing: 2px;
-        }
+/* HERO */
+.hero {
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("660125839_1535093435285887_6077932245051341909_n.jpg");
 
-        .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
+    background-size: cover;
+    background-position: center;
 
-        .table-container {
-            background: white;
-            border-radius: 12px;
-            overflow-x: auto;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
+    min-height: 300px;
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 750px;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-        th {
-            background: var(--maroon);
-            color: white;
-            padding: 16px 12px;
-            text-align: center;
-            font-size: 14px;
-        }
+    color: white;
+}
 
-        td {
-            padding: 15px 12px;
-            text-align: center;
-            border-bottom: 1px solid #eeeeee;
-        }
+.hero h1 {
+    font-size: 50px;
+    letter-spacing: 3px;
+}
 
-        tr:last-child td {
-            border-bottom: none;
-        }
+.hero p {
+    margin-top: 12px;
+    font-size: 17px;
+}
 
-        tr:hover {
-            background: #fafafa;
-        }
+/* CONTENT */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
 
-        td:nth-child(2) {
-            font-weight: bold;
-            text-align: left;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .loading,
-        .error,
-        .empty {
-            text-align: center;
-            padding: 40px;
-            color: var(--grey);
-        }
+.section-title h2 {
+    font-size: 32px;
+    color: var(--maroon);
+}
 
-        footer {
-            background: var(--black);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-        }
+.section-title p {
+    margin-top: 10px;
+    color: var(--grey);
+}
 
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 34px;
-            }
+/* TABLE */
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-            nav a {
-                display: inline-block;
-                margin: 6px 8px;
-                font-size: 12px;
-            }
-        }
-    </style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th {
+    background: var(--maroon);
+    color: white;
+    padding: 16px 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+td {
+    padding: 15px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+}
+
+tr:hover {
+    background: #fafafa;
+}
+
+td:nth-child(2) {
+    font-weight: bold;
+    text-align: left;
+}
+
+/* POSITION */
+td:first-child {
+    font-weight: bold;
+}
+
+/* LOADING */
+#loading {
+    text-align: center;
+    padding: 30px;
+    color: var(--grey);
+}
+
+/* FOOTER */
+footer {
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 70px;
+}
+
+footer p {
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav div {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-    <a href="index.html">HOME</a>
-    <a href="register.html">REGISTER</a>
-    <a href="teams.html">TEAMS</a>
-    <a href="draw.html">DRAW</a>
-    <a href="results.html">RESULTS</a>
-    <a href="standings.html">STANDINGS</a>
+
+    <div class="logo">
+        FUNDRAISING
+    </div>
+
+    <div>
+        <a href="index.html">HOME</a>
+        <a href="register.html">REGISTER</a>
+        <a href="teams.html">TEAMS</a>
+        <a href="draw.html">DRAW</a>
+        <a href="results.html">RESULTS</a>
+        <a href="standings.html">STANDINGS</a>
+    </div>
+
 </nav>
 
+
+<!-- HERO -->
 <section class="hero">
-    <h1>TEAM STANDINGS</h1>
-    <p>FUNDRAISING TOURNAMENT • 17 OCTOBER 2026</p>
+
+    <div>
+        <h1>TEAM STANDINGS</h1>
+        <p>FUNDRAISING TOURNAMENT • 17 OCTOBER 2026</p>
+    </div>
+
 </section>
 
-<div class="container">
 
-    <div class="table-container">
+<!-- STANDINGS -->
+<section class="container">
 
-        <div id="loading" class="loading">
-            Loading standings...
-        </div>
+    <div class="section-title">
 
-        <div id="error" class="error" style="display:none;">
-            Unable to load standings.
-        </div>
+        <h2>Current Standings</h2>
 
-        <div id="empty" class="empty" style="display:none;">
-            No standings available yet.
-        </div>
+        <p>
+            Updated automatically from the tournament results.
+        </p>
 
-        <table id="standingsTable" style="display:none;">
+    </div>
+
+
+    <div class="table-wrapper">
+
+        <table>
 
             <thead>
+
                 <tr>
-                    <th>POSITION</th>
-                    <th>TEAM</th>
-                    <th>PLAYED</th>
-                    <th>WINS</th>
-                    <th>LOSSES</th>
-                    <th>SETS WON</th>
-                    <th>SETS LOST</th>
-                    <th>POINTS</th>
+                    <th>Position</th>
+                    <th>Team</th>
+                    <th>Played</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Sets Won</th>
+                    <th>Sets Lost</th>
+                    <th>Points</th>
                 </tr>
+
             </thead>
 
-            <tbody id="standingsBody"></tbody>
+            <tbody id="standingsTable">
+
+                <tr>
+                    <td colspan="8" id="loading">
+                        Loading standings...
+                    </td>
+                </tr>
+
+            </tbody>
 
         </table>
 
     </div>
 
-</div>
+</section>
 
+
+<!-- FOOTER -->
 <footer>
-    <p>© 2026 Invercargill Men's Volleyball Team</p>
-    <p>Fundraising Tournament • Invercargill, New Zealand</p>
+
+    <p><strong>Fundraising Tournament</strong></p>
+
+    <p>
+        Hosted by Invercargill Men's Volleyball Team
+    </p>
+
+    <p>
+        17 October 2026 • Southland Girls' High School
+    </p>
+
 </footer>
+
 
 <script>
 
@@ -211,6 +308,7 @@ const csvURL =
 function parseCSV(text) {
 
     const rows = [];
+
     let row = [];
     let value = "";
     let insideQuotes = false;
@@ -221,22 +319,22 @@ function parseCSV(text) {
         const next = text[i + 1];
 
         if (char === '"' && insideQuotes && next === '"') {
+
             value += '"';
             i++;
-        }
 
-        else if (char === '"') {
+        } else if (char === '"') {
+
             insideQuotes = !insideQuotes;
-        }
 
-        else if (char === "," && !insideQuotes) {
+        } else if (char === ',' && !insideQuotes) {
+
             row.push(value);
             value = "";
-        }
 
-        else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        } else if ((char === '\n' || char === '\r') && !insideQuotes) {
 
-            if (char === "\r" && next === "\n") {
+            if (char === '\r' && next === '\n') {
                 i++;
             }
 
@@ -248,98 +346,97 @@ function parseCSV(text) {
 
             row = [];
             value = "";
+
+        } else {
+
+            value += char;
+
         }
 
-        else {
-            value += char;
-        }
     }
 
     if (value !== "" || row.length > 0) {
+
         row.push(value);
 
         if (row.some(cell => cell.trim() !== "")) {
             rows.push(row);
         }
+
     }
 
     return rows;
 }
 
 
-async function loadStandings() {
+fetch(csvURL + "&t=" + new Date().getTime())
 
-    try {
+    .then(response => response.text())
 
-        const response = await fetch(csvURL + "&t=" + Date.now());
+    .then(csv => {
 
-        if (!response.ok) {
-            throw new Error("Could not load standings");
-        }
+        const rows = parseCSV(csv);
 
-        const text = await response.text();
+        const table = document.getElementById("standingsTable");
 
-        const rows = parseCSV(text);
+        table.innerHTML = "";
 
         if (rows.length <= 1) {
 
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("empty").style.display = "block";
+            table.innerHTML = `
+                <tr>
+                    <td colspan="8">
+                        Standings are not available yet.
+                    </td>
+                </tr>
+            `;
 
             return;
         }
 
-        const body = document.getElementById("standingsBody");
 
-        body.innerHTML = "";
+        // Skip the header row
+        for (let i = 1; i < rows.length; i++) {
 
-        rows.slice(1).forEach(row => {
+            const row = rows[i];
 
             if (!row[1] || row[1].trim() === "") {
-                return;
+                continue;
             }
 
             const tr = document.createElement("tr");
 
-            row.slice(0, 8).forEach((cell, index) => {
+            for (let j = 0; j < 8; j++) {
 
                 const td = document.createElement("td");
 
-                td.textContent = cell.trim();
-
-                if (index === 0) {
-                    td.style.fontWeight = "bold";
-                }
+                td.textContent = row[j] || "";
 
                 tr.appendChild(td);
 
-            });
+            }
 
-            body.appendChild(tr);
+            table.appendChild(tr);
 
-        });
+        }
 
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("standingsTable").style.display = "table";
+    })
 
-    }
-
-    catch (error) {
+    .catch(error => {
 
         console.error(error);
 
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("error").style.display = "block";
+        document.getElementById("standingsTable").innerHTML = `
+            <tr>
+                <td colspan="8">
+                    Unable to load standings.
+                </td>
+            </tr>
+        `;
 
-    }
-
-}
-
-
-loadStandings();
+    });
 
 </script>
 
 </body>
 </html>
-
